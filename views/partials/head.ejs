@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Savehyip
-Version: 1.0.0
-Author: WebstrotSavehyip
 
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="zxx">
 <!--[endif]-->
 
@@ -52,7 +44,7 @@ Author: WebstrotSavehyip
   <!-- Top Scroll End -->
   <!-- cp navi wrapper Start -->
   <nav class="cd-dropdown d-block d-sm-block d-md-block d-lg-none d-xl-none">
-    <h2><a href="index.html"> savehyip </a></h2>
+    <h2><a href="/"> UniqueLaurel </a></h2>
     <a href="#0" class="cd-close">Close</a>
     <ul class="cd-dropdown-content">
       <li>
@@ -61,10 +53,10 @@ Author: WebstrotSavehyip
         </form>
       </li>
       <li class="has-children">
-        <a href="#">index</a>
-        <ul class="cd-secondary-dropdown icon_menu is-hidden">
+        <a href="/">index</a>
+        <!-- <ul class="cd-secondary-dropdown icon_menu is-hidden">
           <li class="go-back"><a href="#0">Menu</a></li>
-          <li><a href="/">index I</a></li>
+          <li><a href="/">index I</a></li> -->
           <!-- <li><a href="index2.html">index II</a></li>
                     <li><a href="index3.html">index III</a></li> -->
         </ul>
@@ -73,7 +65,7 @@ Author: WebstrotSavehyip
       <li><a href="/investment"> investment plan </a></li>
       <li><a href="/faq"> FAQ </a></li>
       <li class="has-children">
-        <a href="#">dashboard</a>
+        <a href="/dashboard">dashboard</a>
         <ul class="cd-secondary-dropdown icon_menu is-hidden">
           <li class="go-back"><a href="#0">Menu</a></li>
           <li>
@@ -300,9 +292,9 @@ Author: WebstrotSavehyip
             </ul>
           </div>
         </div> -->
-
+        <% if(currentUser){%>
         <div class="crm_profile_dropbox_wrapper">
-          <div class="nice-select" tabindex="0"> <span class="current"><img src="images/avatar.png" alt="img"> hi, jenny
+          <div class="nice-select" tabindex="0"> <span class="current"><img src="images/avatar.png" alt="img"> hi, <%= currentUser. username %>
               ! <span class="hidden_xs_content"></span></span>
             <ul class="list">
 
@@ -328,11 +320,11 @@ Author: WebstrotSavehyip
           </div>
         </div>
       </div>
-
+      <%} %>
       <div class="cp_navigation_wrapper main_top_wrapper dashboard_header">
         <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
           <ul class="main_nav_ul">
-            <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">index <i
+            <li class="has-mega gc_main_navigation"><a href="/" class="gc_main_navigation active_class">index <i
                   class="fas fa-caret-down"></i></a>
               <ul class="navi_2_dropdown">
                 <li class="parent">
@@ -503,37 +495,37 @@ Author: WebstrotSavehyip
       <nav class="c-menu js-menu" id="mynavi">
         <ul class="u-list crm_drop_second_ul">
           <li class="crm_navi_icon">
-            <div class="c-menu__item__inner"><a href="my_account.html"><i
+            <div class="c-menu__item__inner"><a href="#"><i
                   class="flaticon-four-grid-layout-design-interface-symbol"></i></a>
               <ul class="crm_hover_menu">
-                <li><a href="my_account.html"><i class="fa fa-circle"></i> my account</a>
+                <li><a href="#"><i class="fa fa-circle"></i> my account</a>
                 </li>
                 <li><a href="view_profile.html"><i class="fa fa-circle"></i> my profile</a>
                 </li>
-                <li><a href="email_notification.html"><i class="fa fa-circle"></i>email notification</a>
+                <li><a href="#"><i class="fa fa-circle"></i>email notification</a>
                 </li>
-                <li><a href="change_password.html"><i class="fa fa-circle"></i>change password</a>
+                <li><a href="#"><i class="fa fa-circle"></i>change password</a>
                 </li>
-                <li><a href="change_pin.html"><i class="fa fa-circle"></i>change pin</a>
+                <li><a href="#"><i class="fa fa-circle"></i>change pin</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="c-menu__item is-active has-sub crm_navi_icon_cont">
-            <a href="my_account.html">
+            <a href="/dashboard">
               <div class="c-menu-item__title"><span>my account</span><i class="no_badge">5</i>
               </div>
             </a>
             <ul>
-              <li><a href="my_account.html"><i class="fa fa-circle"></i> my account</a>
+              <li><a href="/dashboard"><i class="fa fa-circle"></i> my account</a>
               </li>
-              <li><a href="view_profile.html"><i class="fa fa-circle"></i> my profile</a>
+              <li><a href="#"><i class="fa fa-circle"></i> my profile</a>
               </li>
-              <li><a href="email_notification.html"><i class="fa fa-circle"></i>email notification</a>
+              <li><a href="#"><i class="fa fa-circle"></i>email notification</a>
               </li>
-              <li><a href="change_password.html"><i class="fa fa-circle"></i>change password</a>
+              <li><a href="#"><i class="fa fa-circle"></i>change password</a>
               </li>
-              <li><a href="change_pin.html"><i class="fa fa-circle"></i>change pin</a>
+              <li><a href="#"><i class="fa fa-circle"></i>change pin</a>
               </li>
             </ul>
           </li>
@@ -676,11 +668,11 @@ Author: WebstrotSavehyip
         </ul>
         <ul class="u-list crm_drop_second_ul">
           <li class="crm_navi_icon">
-            <div class="c-menu__item__inner"><a href="/investment.html"><i class="flaticon-profile"></i></a>
+            <div class="c-menu__item__inner"><a href="/paymentdashboard"><i class="flaticon-profile"></i></a>
             </div>
           </li>
           <li class="c-menu__item crm_navi_icon_cont">
-            <a href="/investment">
+            <a href="/paymentdashboard">
               <div class="c-menu-item__title">deposit</div>
             </a>
           </li>
