@@ -26,11 +26,11 @@ let userSchema = new mongoose.Schema({
     type: String,
     select: false
   },
-  plan:{
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "Plan"
-  },
+  // plan:{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: "Plan"
+  // },
 
 tokens:[{
   access:{
