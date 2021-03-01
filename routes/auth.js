@@ -234,21 +234,16 @@ router.post('/newpassword', (req, res) => {
 
 // Get route dashboard
 router.get("/dashboard", (req, res) => {
-  
-      res.render('auth/dashboard');
-    
+  User.find({})
+    .then(users => {
+      res.render('auth/dashboard', { users: users });
+    })
+    .catch(err => {
+      req.flash('error_msg', 'ERROR: +err');
+      res.redirect('/login');
+    })
 });
 
 
-// Get route dashboard
-// router.get("/dashboard", (req, res) => {
-//   U.find({})
-//     .then(blogs => {
-//       res.render('auth/dashboard', { blogs: blogs });
-//     })
-//     .catch(err => {
-//       req.flash('error_msg', 'ERROR: +err');
-//       res.redirect('/login');
-//     })
-// });
+
 module.exports = router;

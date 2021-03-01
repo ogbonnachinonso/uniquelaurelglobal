@@ -3501,6 +3501,10 @@ tr.no_boder {
   margin-bottom:28px;
   position:relative;
 }
+.dash{
+  background: #3b3a3a;
+  color: #fff;
+}
 .login_btn{
   background: #dba622;
   color: #fff;

@@ -1,6 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Plan = require('../models/plan');
+const User = require('../models/user');
+const Payment = require('../models/payment')
+
+const path = require('path');
+
+require('dotenv').config();
+const cloudinary = require('cloudinary');
+require('../handler/cloudinary');
+const upload = require('../handler/multer');
+
 
 
 
@@ -22,6 +32,93 @@ router.get('/createPlan', (req, res) => {
   res.render('plans/add');
 });
 
+router.get('/addPayment', (req, res) => {
+  res.render('plans/payment');
+});
+
+
+router.post('/addPayment', upload.single('image'), async (req, res, next) => {
+  try {
+    const result = await cloudinary.v2.uploader.upload(req.file.path)
+    const payment = new Payment()
+    payment.description = req.body.description,
+    payment.imgUrl = result.secure_url
+    await payment.save()
+    req.flash('success_msg', 'Proof of payment uploaded Successfully')
+    res.redirect('/dashboard')
+  }
+  catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    console.error(err);
+    res.redirect('/addPayment');
+  }
+});
+router.get('/payment/:id', (req, res) => {
+  Payment.findOne({ _id: req.params.id })
+    .then((payment) => {
+      res.render('plans/paymentDetails', { payment: payment });
+    })
+    .catch(err => {
+      req.flash('error_msg', 'ERROR: +err');
+      res.redirect('/payment');
+      console.error(err)
+    });
+});
+
+// Get routes edit/:id
+router.get("/editPayment/:id", upload.single('image'), async (req, res) => {
+  try {
+    const payment = await Payment.findOne({ _id: req.params.id });
+    res.render('plans/editpayment', { payment });
+  }
+  catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/paymentdashboard');
+    console.error(err)
+  }
+});
+
+router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
+  try {
+    const payment = await Payment.findById(req.params.id)
+    // Delete image from cloudinary
+    await cloudinary.uploader.destroy(payment.imgUrl);
+    // Upload image to cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+    let data = {
+      description: req.body.description,
+      imgUrl: result.secure_url
+
+    };
+    await Payment.findByIdAndUpdate({ _id: req.params.id }, data, {
+      new: true,
+      // runValidators: true,
+    })
+    req.flash('success_msg', 'Gallery updated successfully');
+    res.redirect('/paymentdashboard');
+  } catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/paymentdashboard');
+    console.error(err)
+  }
+});
+
+//delete request starts here
+router.post("/deletePayment/:id",  async (req, res) => {
+  try {
+    // Find gallery by id
+    let payment = await Payment.findById(req.params.id);
+    // Delete image from cloudinary
+    await cloudinary.uploader.destroy(payment.imgUrl);
+    // Delete gallery from db
+    await payment.remove();
+    req.flash('success_msg', 'Payment post deleted successfully');
+    res.redirect('/paymentdashboard');
+  } catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/paymentdashboard');
+  }
+});
 // Post routes Add plan
 router.post('/createPlan',  async (req, res, next) => {
   try {
@@ -36,6 +133,19 @@ router.post('/createPlan',  async (req, res, next) => {
     console.error(err);
     res.redirect('/createPlan');
   }
+});
+
+
+// Get route dashboard
+router.get("/paymentdashboard", (req, res) => {
+  Payment.find({})
+    .then(payments => {
+      res.render('plans/planDashboard', { payments: payments });
+    })
+    .catch(err => {
+      req.flash('error_msg', 'ERROR: +err');
+      res.redirect('/login');
+    })
 });
 
 module.exports = router;

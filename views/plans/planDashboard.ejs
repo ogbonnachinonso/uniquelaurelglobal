@@ -1,0 +1,143 @@
+<%- include('../partials/head') -%>
+
+
+  <!-- <div class="l-main">
+    <!--  my account wrapper start -->
+    <!-- <div class="account_top_information">
+      <div class="account_overlay"></div>
+      <div class="useriimg"><img src="images/user.png" alt="users"></div>
+      <% if(currentUser){%>
+        <div class="userdet uderid">
+          <h3>
+            <%= currentUser. username %>
+          </h3>
+
+          <dl class="userdescc">
+
+            <dt>First Name</dt>
+            <dd>: &nbsp; <%= currentUser. firstName %>
+            </dd>
+            <dt>Last Name</dt>
+            <dd>: &nbsp; <%= currentUser. lastName %>
+            </dd>
+            <dt>Email</dt>
+            <dd>: &nbsp; <%= currentUser. email %>
+            </dd>
+
+
+          </dl>
+
+        </div> -->
+
+<!-- 
+        <div class="col-xl-3 col-md-6 col-lg-6 col-sm-6 col-12">
+          <div class="investment_box_wrapper sv_pricing_border float_left">
+            <div class="investment_icon_circle parpal_color">
+              <i class="flaticon-bar-chart"></i>
+            </div>
+            <div class="investment_border_wrapper"></div>
+            <div class="investment_content_wrapper">
+              <h1><a href="/investment">silver plan</a></h1>
+              <p>Up to 5% for 20 Hourly
+                <br> Compound Available
+                <br> Down to 5% for 20 Hourly
+                <br> Principal Return
+                <br> Up to 5% for 20 Hourly
+              </p>
+            </div>
+            <div class="about_btn plans_btn bg_btn_color">
+              <ul>
+                <li>
+                  <a href="/addPayment">Upload proof of payment</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <%} %>
+    </div> --> 
+<div class="l-main">
+   <div class="account_top_information">
+        
+  <div class="account_overlay"></div>
+    <% payments.forEach((payment)=>{ %>
+    <div class="container-fluid">
+    <div class="card mb-5 w-90 rounded dash">
+      <div class="row no-gutters">
+        <div class="col-md-4 ">
+        <img src="<%= payment.imgUrl %>" alt="card-img" class="card-img img-fluid" />
+          </div>
+          <div class="col-md-8 ">
+            <div class="card-body">
+             <h4 class="card-title mt-5 text-white">Username: John
+                    </h4>
+                    <hr/>
+                    <p class="card-text "><b>Description: <%= payment.description %> </b></p>
+                    <hr />
+                    <br />
+                    <p class="card-text "><b>Date: <%= payment.createdAt.toLocaleDateString() %></b></p>
+                    <hr />
+                    <br />
+                  
+                    <a class="btn btn-warning" href="/editPayment/<%= payment.id %>">Edit</a>
+                    <form style="display: inline;" action="/deletePayment/<%= payment.id %>" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                    </form>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <% }) %>
+            <div class="container">
+              <div class="row ">
+                <div class="col-sm-12">
+                  <div class="d-flex">
+                    <a href="/addrecipe" class="btn btn-success">Add Recipe</a>
+                    <a href="/logout" class="btn btn-logout text-white"
+                      style="height: 38px; margin-left: 20px; margin-top: 0px;">Log
+                      Out</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <!--  footer  wrapper start -->
+    <div class="copy_footer_wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="crm_left_footer_cont">
+              <p>2020 Copyright © <a href="#"> savehyip </a> . All Rights Reserved.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  footer  wrapper end -->
+  <!-- main box wrapper End-->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/dropify.min.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <script src="js/jquery.countTo.js"></script>
+  <script src="js/plugin.js"></script>
+  <script src="js/jquery.inview.min.js"></script>
+  <script src="js/jquery.magnific-popup.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/datatables.js"></script>
+  <script src="js/jquery.menu-aim.js"></script>
+  <script src="js/custom.js"></script>
+  <!--main js file end-->
+  </body>
+
+  </html>

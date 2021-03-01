@@ -1,17 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
-
-const bodyParser = require('body-parser');
 const path = require('path');
-
+const bodyParser = require('body-parser');
 const passport = require('passport');
-const session = require('express-session');
-const flash = require('connect-flash');
-const localStrategy = require('passport-local').Strategy;
 
+const localStrategy = require('passport-local').Strategy;
+const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
 const Router = require('./routes/index');
- const Investment = require('./routes/plans');
+const Investment = require('./routes/plans');
 
 const Auth = require('./routes/auth');
 
@@ -41,11 +40,12 @@ app.use(
   session({
     secret: "mysecret",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    // store: new MongoStore({mongooseConnection:mongoose.connection})
   })
 );
 
-passport 
+passport
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy({ usernameField: 'username' },
@@ -65,8 +65,8 @@ app.use((req, res, next) => {
 })
 
 app.use(Router);
- app.use(Auth);
- app.use(Investment);
+app.use(Auth);
+app.use(Investment);
 
 
 const port = process.env.PORT || 7000;
