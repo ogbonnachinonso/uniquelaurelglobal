@@ -1,0 +1,71 @@
+<%- include('../partials/header') -%>
+
+    <div class="login_wrapper fixed_portion float_left">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="login_top_box float_left">
+                        <div class="login_banner_wrapper">
+                            <img src="images/logo2.png" alt="logo">
+                            <div class="about_btn  facebook_wrap float_left">
+
+                                <a href="#">login with facebook <i class="fab fa-facebook-f"></i></a>
+
+                            </div>
+                            <div class="about_btn google_wrap float_left">
+
+                                <a href="#">login with pinterest <i class="fab fa-pinterest-p"></i></a>
+
+                            </div>
+                            <div class="jp_regis_center_tag_wrapper jb_register_red_or">
+                                <h1>OR</h1>
+                            </div>
+                        </div>
+                        <div class="login_form_wrapper">
+                            <div class="sv_heading_wraper heading_wrapper_dark dark_heading hwd">
+
+                                <h3> login to enter</h3>
+
+                            </div>
+                            <%- include('../partials/message') -%>
+
+
+                                <form action="/login" method="POST">
+
+
+                                    <div class=" mt-3 form-group icon_form comments_form register_contact ">
+                                        <input required type="text" name="username" class="form-control "
+                                            placeholder="Enter Username">
+                                    </div>
+
+
+                                    <div class=" mt-3 form-group icon_form comments_form register_contact ">
+                                        <input required type="password" name="password" class="form-control"
+                                            placeholder="Enter Password">
+                                    </div>
+
+
+                                    <button class="about_btn login_btn register_btn float_left mt-3 pb-2
+                                      " type="submit">
+                                        <a href="/register"></a> Login</button>
+                                </form>
+                                <div>
+                                    <a class=" float_left  mb-2" href="/forgot">Forgot Password?</a>
+                                </div>
+                                <div>
+                                    <a class="text-center float_left login_btn pt-2 pb-2 mb-2" href="/register">Register to Create Account</a>
+                                </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <%- include('../partials/footer') -%>

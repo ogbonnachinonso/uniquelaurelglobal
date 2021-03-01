@@ -1,0 +1,26 @@
+<%- include('../partials/header') -%>
+  <div class="login_wrapper fixed_portion float_left">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="login_top_box float_left">
+
+            <h1 class="text-center text-white">Create an Investment Plan</h1>
+            <%- include('../partials/message') -%>
+
+              <form action="/createPlan" method="POST">
+
+                <div class=" mt-3 form-group icon_form comments_for register_contac ">
+                  <input required type="text" name="category" class="form-control " placeholder="Enter Plan">
+                </div>
+
+
+                <button class="about_btn login_btn register_btn float_left mt-3 pb-2
+      " type="submit"> Create</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('../partials/footer') -%>
