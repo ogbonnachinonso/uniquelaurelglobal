@@ -1,4 +1,5 @@
-<%- include('../partials/header') -%>
+
+  <%- include('../partials/header') -%>
 
   <div class="page_title_section dashboard_title">
 
@@ -14,7 +15,7 @@
             <div class="sub_title_section">
               <ul class="sub_title">
                 <li> <a href="#"> Home </a>&nbsp; / &nbsp; </li>
-                <li>Upload Payment</li>
+                <li>Edit Payment</li>
               </ul>
             </div>
           </div>
@@ -31,24 +32,38 @@
             <h1 class="text-center text-white">Edit Proof of Payment</h1>
             <%- include('../partials/message') -%>
 
-              <form action="/editPayment/<%= payment.id %>" method="POST" enctype="multipart/form-data">
+            <form action="/editPayment/<%= payment.id %>" method="POST" enctype="multipart/form-data">
 
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <input name="description" id="description" class="form-control" value="<%= payment.description %>">
-                </div>
-                <div class="form-group">
-                  <label for="image">Upload Image</label>
-                  <input type="file" id="image" name="image" value="<%= payment.imgUrl %>" required>
-                </div>
-                <div>
-                  <a href="/paymentdashboard" class="btn btn-danger">Cancel</a>
-                  <button type="submit" class="btn btn-warning">Save</button>
-                </div>
+              <div class="form-group">
+                <label for="name">Accout Username</label>
+                <input required name="name" id="name" class="form-control select" placeholder="Enter Account Username" value="<%= payment.name %>">
+              </div>
+
+              <div class="form-group">
+                <label for="plan">Investment Plan</label>
+                <input required name="plan" id="plan" class="form-control select" placeholder="Enter Investment Plan" value="<%= payment.plan %>">
+              </div>
+
+             
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input required name="description" id="description" class="form-control select" placeholder="Enter Payment Purpose" value="<%= payment.description %>">
+              </div>
+              
+              
+              <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input required type="file" id="image" name="image" class="select" required>
+              </div>
+              <div>
+                <a href="/paymentdashboard" class="btn btn-danger">Cancel</a>
+                <button type="submit" class="btn btn-warning">Save</button>
+              </div>
               </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <%- include('../partials/footer') -%>
