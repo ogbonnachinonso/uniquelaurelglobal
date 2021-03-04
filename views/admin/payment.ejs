@@ -58,7 +58,7 @@
                     <td><%= payment.description %></td>
                     <td><%= payment.createdAt.toLocaleDateString() %></td>
                     <td><a class="btn btn-warning" href="/editPayment/<%= payment.id %>">Edit</a>
-                    <form style="display: inline;" action="/deletePayment/<%= payment.id %>"method="POST">
+                    <form style="display: inline;" action="/deletePayment"method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
                     </form>
