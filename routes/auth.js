@@ -4,8 +4,6 @@ const passport = require('passport');
 const crypto = require('crypto');
 const async = require('async');
 const nodemailer = require('nodemailer');
-// const mailgun = require('nodemailer-mailgun-transport');
-
 const bodyParser = require('body-parser');
 const User = require('../models/user');
 const Plan = require('../models/plan');
