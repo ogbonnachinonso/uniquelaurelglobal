@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const crypto = require('crypto');
+const async = require('async');
 const nodemailer = require('nodemailer');
+// const mailgun = require('nodemailer-mailgun-transport');
+
 const bodyParser = require('body-parser');
 const User = require('../models/user');
 const Plan = require('../models/plan');
 const { request } = require("express");
-// const { ensureAuth, ensureGuest} = require('../middleware/auth');
 
 
 //login get route
@@ -16,8 +19,15 @@ router.get('/login', (req, res) => {
 });
 
 //register get route
-router.get('/register', (req, res) => {
-  res.render('auth/register');
+router.get('/register', async (req, res) => {
+  try {
+    const user = new User() 
+    res.render('auth/register', {
+      user: user
+    })
+  } catch {
+    res.redirect('/register')
+  }
 });
 
 // login post route
@@ -28,16 +38,17 @@ router.post('/login', passport.authenticate('local', {
 
 // register post route
 router.post('/register', (req, res) => {
+
   let { username, email, referralName,
-    firstName, lastName, 
+    firstName, lastName, plan,
     password } = req.body;
   let userData = {
     referralName,
     firstName,
     lastName,
     username,
-    email
-    
+    email,
+    plan
   };
   User.findOne({ username: req.body.username }, { email: req.body.email }, function (err, user) {
     if (err)
@@ -127,14 +138,17 @@ router.post('/forgot', (req, res, next) => {
           pass: process.env.GMAIL_PASSWORD
         }
       });
+
+      
+
       let mailOptions = {
         to: user.email,
-        from: 'OG Ventures chinonsoubadire2@gmail.com',
-        subject: "Recovery Email from OG Ventures' Blog",
+        from: 'uniquelaurel20@gmail.com',
+        subject: "Recovery Email from UniqueLaurelGlobal' website",
         text: 'Please click the following link to recover your password:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' + 'If you did not request this, please ignore this email.'
       };
-      smtpTransport.sendMail(mailOptions, err => {
+      smtpTransport.sendMail(mailOptions, err  => {
         req.flash('success_msg', 'Email sent with further instructions. Please check that.');
         res.redirect('/forgot');
       })
@@ -182,9 +196,10 @@ router.post('/reset/:token', (req, res) => {
           pass: process.env.GMAIL_PASSWORD
         }
       });
+
       let mailOptions = {
         to: user.email,
-        from: 'OG Ventures chinonsoubadire2@gmail.com',
+        from: 'uniquelaurel20@gmail.com',
         subject: 'Your Password is changed',
         text: 'Hello, ' + user.username + '\n\n' +
           'This is a confirmation that the password for your account' + user.email + 'has been changed.'

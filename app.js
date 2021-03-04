@@ -13,6 +13,7 @@ const Router = require('./routes/index');
 const Investment = require('./routes/plans');
 
 const Auth = require('./routes/auth');
+const Admin = require('./routes/admin');
 
 const User = require('./models/user');
 
@@ -65,9 +66,10 @@ app.use((req, res, next) => {
 })
 
 app.use(Router);
+app.use(Admin);
 app.use(Auth);
 app.use(Investment);
 
 
-const port = process.env.PORT || 7000;
+const port = process.env.PORT ||7000;
 app.listen(port, () => console.log(`server up on port ${port}`))

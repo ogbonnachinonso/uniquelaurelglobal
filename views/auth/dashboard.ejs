@@ -23,10 +23,13 @@
                   <br />
                   <p class="card-text "><b>Email: <%= currentUser. email %> </b></p>
                   <hr />
-                  <br />
-                  <div class="card-footer mr-5 mb-4 mt-2">
+               
+                  <p class="card-text "><b>Investment Plan: <%= currentUser. plan.category %> </b></p>
+                  <hr />
+                  
+                  <div class="card-footer mr-5 mb-4 ">
                     <a href="/addPayment" class="btn btn-success">Upload Proof of payment</a>
-                    <a href="/paymentdashboard" class="btn btn-warning text-white"
+                    <a href="/mypayment" class="btn btn-warning text-white"
                       style="height: 38px; margin-left: 60px; margin-top: 0px;">See Payment Details
                     </a>
                     </div>

@@ -1,0 +1,128 @@
+<%- include('../partials/admin') -%>
+
+  <div class="l-main">
+    <div class="account_top_information">
+      <div class="account_overlay"></div>
+
+
+
+
+      <!-- transaction wrapper start -->
+      <div class="transaction_wrapper float_left">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="sv_heading_wraper half_section_headign half_sec_heading">
+                <h4>Here are our</h4>
+                <h3> Current Users</h3>
+
+              </div>
+              <div class="x_offer_tabs_wrapper">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="/addPayment"> deposits</a>
+                  </li>
+                  <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#menu2">withdraw</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+              <div class="tab-content">
+                <div id="home" class="tab-pane active">
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="table_next_race league_table overflow-scroll">
+                        <table>
+                          <tr>
+                            <th class="form_table_resp">ReferralName</th>
+                            <th>Username</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Email</th>
+                            <th>Investment Plan</th>
+
+                          </tr>
+
+
+
+
+                          <% users.forEach((user)=>{ %>
+                            <tr>
+
+                              <td>
+                                <%= user.referralName %>
+                              </td>
+
+                              <td>
+                                <%= user.username %>
+                              </td>
+                              <td>
+                                <%= user.firstName %>
+                              </td>
+                              <td>
+                                <%= user.lastName %>
+                              </td>
+                              <td>
+                                <%= user.email %>
+                              </td>
+
+                              <td>
+                                <%= user.plan %>
+                              </td>
+
+                            </tr>
+
+                            <% }) %>
+                        </table>
+                        
+
+                        <!-- </table> -->
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- transaction wrapper start -->
+  <!--  footer  wrapper start -->
+  <div class="copy_footer_wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="crm_left_footer_cont">
+            <p>2021 Copyright © <a href="#"> Uniquelaurelglobal </a> . All Rights Reserved.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--  footer  wrapper end -->
+  <!-- main box wrapper End-->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/dropify.min.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <script src="js/jquery.countTo.js"></script>
+  <script src="js/plugin.js"></script>
+  <script src="js/jquery.inview.min.js"></script>
+  <script src="js/jquery.magnific-popup.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/datatables.js"></script>
+  <script src="js/jquery.menu-aim.js"></script>
+  <script src="js/custom.js"></script>
+  <!--main js file end-->
+  </body>
+
+  </html>

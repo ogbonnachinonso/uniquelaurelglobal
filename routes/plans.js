@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Plan = require('../models/plan');
 const User = require('../models/user');
-const Payment = require('../models/payment')
+const Payment = require('../models/payment');
+const mongoose = require('mongoose');
 
 const path = require('path');
 
@@ -32,8 +33,19 @@ router.get('/createPlan', (req, res) => {
   res.render('plans/add');
 });
 
-router.get('/addPayment', (req, res) => {
-  res.render('plans/payment');
+router.get('/addPayment', async(req, res) => {
+  try {
+    //  const plans = await Plan.find({})
+    //  const users = await User.find({})
+    const payment = new Payment() 
+    res.render('plans/payment', {
+      //  plans: plans,
+      //  users: users,
+      payment: payment
+    })
+  } catch {
+    res.redirect('/login')
+  }
 });
 
 
@@ -41,6 +53,8 @@ router.post('/addPayment', upload.single('image'), async (req, res, next) => {
   try {
     const result = await cloudinary.v2.uploader.upload(req.file.path)
     const payment = new Payment()
+    payment.name = req.body.name,
+    payment.plan = req.body.plan,
     payment.description = req.body.description,
     payment.imgUrl = result.secure_url
     await payment.save()
@@ -86,6 +100,8 @@ router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
     // Upload image to cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
     let data = {
+      name: req.body.name,
+      plan: req.body.plan,
       description: req.body.description,
       imgUrl: result.secure_url
 

@@ -19,6 +19,7 @@ let userSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
     unique: true
   },
  
@@ -26,12 +27,11 @@ let userSchema = new mongoose.Schema({
     type: String,
     select: false
   },
-  // plan:{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: "Plan"
-  // },
-
+  plan:{
+    type: String,
+    required: true,
+    
+  },
 tokens:[{
   access:{
     type: String,

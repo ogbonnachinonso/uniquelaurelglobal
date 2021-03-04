@@ -1,5 +1,29 @@
 <%- include('../partials/header') -%>
 
+<!-- inner header wrapper start -->
+<div class="page_title_section">
+
+    <div class="page_header">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-lg-9 col-md-9 col-12 col-sm-8">
+  
+            <h1>Login</h1>
+          </div>
+          <div class="col-lg-3 col-md-3 col-12 col-sm-4">
+            <div class="sub_title_section">
+              <ul class="sub_title">
+                <li> <a href="/"> Home </a>&nbsp; / &nbsp; </li>
+                <li>Login</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="login_wrapper fixed_portion float_left">
         <div class="container">
             <div class="row">
@@ -35,13 +59,13 @@
 
                                     <div class=" mt-3 form-group icon_form comments_form register_contact ">
                                         <input required type="text" name="username" class="form-control "
-                                            placeholder="Enter Username">
+                                            placeholder="Enter Username" value="<%= typeof name != 'undefined' ? username : '' %>">
                                     </div>
 
 
                                     <div class=" mt-3 form-group icon_form comments_form register_contact ">
                                         <input required type="password" name="password" class="form-control"
-                                            placeholder="Enter Password">
+                                            placeholder="Enter Password" value="<%= typeof name != 'undefined' ? password : '' %>">
                                     </div>
 
 

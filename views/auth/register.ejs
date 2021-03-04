@@ -23,108 +23,7 @@
       </div>
     </div>
   </div>
-  <!-- inner header wrapper end -->
-  <!-- login wrapper start -->
-  <!-- <div class="login_wrapper fixed_portion float_left">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-          <div class="login_top_box float_left">
-            <div class="login_banner_wrapper register_banner_wrapper">
-              <img src="images/logo2.png" alt="logo">
-              <div class="about_btn  facebook_wrap float_left">
 
-                <a href="#">login with facebook <i class="fab fa-facebook-f"></i></a>
-
-              </div>
-              <div class="about_btn google_wrap float_left">
-
-                <a href="#">login with pinterest <i class="fab fa-pinterest-p"></i></a>
-
-              </div>
-              <div class="jp_regis_center_tag_wrapper jb_register_red_or">
-                <h1>OR</h1>
-              </div>
-            </div>
-            <div class="login_form_wrapper register_wrapper">
-              <div class="sv_heading_wraper heading_wrapper_dark dark_heading hwd">
-
-                <h3> Register To Enter</h3>
-
-              </div>
-              <%- include('../partials/message') -%>
-
-                <form action="/register" method="POST">
-
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="text" class="form-control require" name="referralName" placeholder="Referral Name*">
-
-                  </div>
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="text" class="form-control require" name="firstName" placeholder="First Name*">
-
-                  </div>
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="text" class="form-control require" name="lastName" placeholder="Last Name*">
-
-                  </div>
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="text" class="form-control require" name="username" placeholder="Username">
-
-                  </div>
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="password" class="form-control require" name="password" placeholder="Password">
-
-                  </div>
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="password" class="form-control require" name="password" placeholder="Confirm Password">
-
-                  </div>
-                  <div class="form-group icon_form comments_form register_contact">
-
-                    <input type="text" class="form-control require" name="email" placeholder="Email Address*">
-
-                  </div>
-                  <div class="select_box register_contact">
-                    <select>
-                      <option>country</option>
-                      <option>autralia</option>
-                      <option>nigeria</option>
-                      <option>ghana</option>
-                      <option>bahamas</option>
-                      <option>china</option>
-                      <option>canada</option>
-                      <option>congo</option>
-                      <option>india</option>
-                    </select>
-                  </div>
-                  <div class="login_remember_box">
-                    <label class="control control--checkbox px-2">I agreed to the Terms and Conditions.
-                      <input type="checkbox">
-                      <span class="control__indicator"></span>
-                    </label>
-
-                  </div>
-                  <button type="submit" class="about_btn login_btn register_btn float_left">
-                    <a href=""></a> Register</button> -->
-                  <!-- <div type="submit" class="about_btn login_btn register_btn float_left">
-                <a href="">submit</a>
-              </div> -->
-                <!-- </form>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- login wrapper end -->
 
 
 
@@ -141,41 +40,50 @@
               <div class="form-row">
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <input required type="text" name="referralName" class="form-control "
-                    placeholder="Enter Referral Name">
+                    placeholder="Enter Referral Name" value="<%= typeof name != 'undefined' ? referralName : '' %>">
                 </div>
 
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
-                  <input required type="text" name="firstName" class="form-control " placeholder="Enter First Name">
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
-                  <input required type="text" name="lastName" class="form-control " placeholder="Enter Last Name">
-                </div>
-
-                <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
-                  <input required type="text" name="username" class="form-control " placeholder="Enter Username">
+                  <input required type="text" name="firstName" class="form-control " placeholder="Enter First Name" value="<%= typeof name != 'undefined' ? firstName : '' %>">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
-                  <input type="email" name="email" class="form-control input mt-2" placeholder="Enter Email">
+                  <input required type="text" name="lastName" class="form-control " placeholder="Enter Last Name" value="<%= typeof name != 'undefined' ? lastName : '' %>">
+                </div>
+
+                <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
+                  <input required type="text" name="username" class="form-control " placeholder="Enter Username" value="<%= typeof name != 'undefined' ? username : '' %>">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
+                  <input required type="email" name="email" class="form-control input mt-2" placeholder="Enter Email" value="<%= typeof email != 'undefined' ? email : '' %>">
                 </div>
 
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <input required type="password" name="password" class="form-control p-3 mt-2"
-                    placeholder="Enter Password">
+                    placeholder="Enter Password" value="<%= typeof name != 'undefined' ? password : '' %>">
                 </div>
               </div>
+              <label for="plan">Choose Investment Plan</label> 
+              <select name="plan" class="select ">
+                <option>Silver</option>
+                <option>Copper</option>
+                <option>Bronze</option>
+                <option >Gold</option>
+                </select>
+              <!-- <div class="fields col-sm-12 "> -->
              
+              <!-- </div> -->
               <button class="about_btn login_btn register_btn float_left mt-3 pb-2
           " type="submit">
                 <a href="/login"></a> Register</button>
             </form>
         </div>
-        
+
       </div>
     </div>
   </div>

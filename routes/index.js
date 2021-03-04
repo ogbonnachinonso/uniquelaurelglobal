@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+const User = require('../models/user');
+const Plan = require('../models/plan');
 
 
 // landing page
@@ -12,5 +13,7 @@ router.get('/', (req, res) => {
 router.get('/about', (req, res) => {
   res.render('about');
 });
+
+
 
 module.exports = router;

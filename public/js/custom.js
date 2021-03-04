@@ -403,6 +403,12 @@
                     error: 'Désolé, le fichier trop volumineux'
                 }
             });
+            
+            $(document).ready(function() {
+                $('.venobox').venobox({
+                  'share': false
+                });
+              });
 
             // Used events
             var drEvent = $('#input-file-events').dropify();
