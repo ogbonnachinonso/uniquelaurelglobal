@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
-const id = mongoose.Types.ObjectId
+// const id = mongoose.Types.ObjectId
 const User = require('../models/user');
 const Plan = require('../models/plan');
 const Payment = require('../models/payment')
@@ -35,7 +35,81 @@ router.get("/payments", async (req, res) => {
   
 });
 
-// Get route dashboard
+//Admin approval get route
+router.get("/users/:id",  async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+    res.render('admin/register', { user });
+  }
+  catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/users');
+    console.error(err)
+  }
+});
+
+//User get route
+router.get("/user/:id",  async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+    res.render('admin/userDetails', { user });
+  }
+  catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/users');
+    console.error(err)
+  }
+});
+
+//Edit Payment Get Route
+router.get("/editPayment/:id", upload.single('image'), async (req, res) => {
+  try {
+    const payment = await Payment.findOne({ _id: req.params.id });
+    res.render('plans/editpayment', { payment });
+  }
+  catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/payments');
+    console.error(err)
+  }
+});
+
+
+//Update User Post route
+router.post('/users/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+    let data = {
+      plan: req.body.plan,
+      amount: req.body.amount,
+      phone: req.body.phone,
+      bonus: req.body.bonus,
+    };
+    await User.findByIdAndUpdate({ _id: req.params.id }, data, {
+      new: true,
+      // runValidators: true,
+    })
+    req.flash('success_msg', 'User updated successfully');
+    res.redirect('/users');
+  } catch (err) {
+    req.flash('error_msg', 'ERROR: +err');
+    res.redirect('/users');
+    console.error(err)
+  }
+});
+
+// Get route Referral Dashboard
+router.get("/referralaccount", (req, res) => {
+  User.find({})
+    .then(users => {
+      res.render('admin/approve', { users: users });
+    })
+    .catch(err => {
+      req.flash('error_msg', 'ERROR: +err');
+      res.redirect('/users');
+    })
+});
+// Get route Users dashboard
 router.get("/users", (req, res) => {
   User.find({})
     .then(users => {
@@ -47,18 +121,6 @@ router.get("/users", (req, res) => {
     })
 });
 
-// router.get('/users', async (req, res) => {
-//   try {
-//     const plans = await Plan.find({})
-//     const users = await User.find({}).populate({path: "plan", model: "Plan"});
-//     res.render('admin/user', {
-//       plans: plans,
-//       users: users
-//     })
-//   } catch {
-//     req.flash('error_msg', 'ERROR: +err');
-//     res.redirect('/register')
-//   }
-// });
+
 
 module.exports = router;

@@ -33,13 +33,18 @@
               <form action="/addPayment" method="POST" enctype="multipart/form-data">
 
               <div class="form-group">
-                <label for="name">Accout Username</label>
-                <input required name="name" id="name" class="form-control select" placeholder="Enter Account Username" value="<%= typeof name != 'undefined' ? name : '' %>">
+                <label for="user">Accout Username</label>
+                <input required name="user" id="user" class="form-control select" placeholder="Enter Account Username" value="<%= typeof name != 'undefined' ? user : '' %>">
               </div>
 
               <div class="form-group">
                 <label for="plan">Investment Plan</label>
                 <input required name="plan" id="plan" class="form-control select" placeholder="Enter Investment Plan" value="<%= typeof name != 'undefined' ? plan : '' %>">
+              </div>
+
+              <div class="form-group">
+                <label for="amount">Investment Amount</label>
+                <input required name="amount" id="amount" class="form-control select" placeholder="Enter Investment Amount" value="<%= typeof name != 'undefined' ? amount : '' %>">
               </div>
 
              

@@ -36,62 +36,63 @@
         </div>
         <div class="col-sm-12">
           <%- include('../partials/message')-%>
-            <form action="/register" method="POST">
+            <form action="/users/<%= user.id %>" method="POST">
               <div class="form-row">
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <label for="plan"> Referral Name</label> 
                   <input required type="text" name="referralName" class="form-control "
-                    placeholder="Enter Referral Name" value="<%= typeof name != 'undefined' ? referralName : '' %>">
+                    placeholder="Enter Referral Name" value="<%= user.referralName %>">
+                    
                 </div>
 
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <label for="plan"> First Name</label> 
-                  <input required type="text" name="firstName" class="form-control " placeholder="Enter First Name" value="<%= typeof name != 'undefined' ? firstName : '' %>">
+                  <input required type="text" name="firstName" class="form-control " placeholder="Enter First Name" value="<%= user.firstName %>">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <label for="plan"> Last Name</label> 
-                  <input required type="text" name="lastName" class="form-control " placeholder="Enter Last Name" value="<%= typeof name != 'undefined' ? lastName : '' %>">
+                  <input required type="text" name="lastName" class="form-control " placeholder="Enter Last Name" value="<%= user.lastName %>">
                 </div>
 
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <label for="plan"> Username</label> 
-                  <input required type="text" name="username" class="form-control " placeholder="Enter Username" value="<%= typeof name != 'undefined' ? username : '' %>">
+                  <input required type="text" name="username" class="form-control " placeholder="Enter Username" value="<%= user.username %>">
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <label for="plan"> Email</label> 
-                  <input required type="email" name="email" class="form-control input mt-2" placeholder="Enter Email" value="<%= typeof email != 'undefined' ? email : '' %>">
+                  <input required type="email" name="email" class="form-control input mt-2" placeholder="Enter Email" value="<%= user.email %>">
                 </div>
 
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
-                  <label for="plan"> Password</label> 
-                  <input required type="password" name="password" class="form-control p-3 mt-2"
-                    placeholder="Enter Password" value="<%= typeof name != 'undefined' ? password : '' %>">
+                  <label for="amount"> Amount</label> 
+                  <input  type="amount" name="amount" class="form-control p-3 mt-2"
+                    placeholder="Enter amount" value="<%= user.amount %>">
                 </div>
               </div>
+              
               <div class="form-row">
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
                   <label for="plan"> Choose Investment Plan</label> 
-              <select name="plan" class="select">
-                <option>Silver</option>
-                <option>Copper</option>
-                <option>Bronze</option>
-                <option >Gold</option>
-                </select>
+                  <input required type="text" name="plan" class="form-control " placeholder="Enter Plan" value="<%= user.plan %>">
               </div>
                 <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
-                  <label for="plan"> Phone</label> 
-                  <input required type="tel" name="phone" class="form-control " placeholder="Enter Phone Number" value="<%= typeof name != 'undefined' ? phone : '' %>">
+                  <label for="phone"> Phone</label> 
+                  <input required type="number" name="phone" class="form-control " placeholder="Enter Phone Number" value="<%= user.phone %>">
                 </div>
               </div>
+              <div class="col-sm-6 mt-3 form-group icon_form comments_form register_contact ">
+                <label for="bonus"> Bonus</label> 
+                <input  type="bonus" name="bonus" class="form-control p-3 mt-2"
+                  placeholder="Enter bonus" value="<%= user.bonus %>">
+              </div>
               <button class="about_btn login_btn register_btn float_left mt-3 pb-2
-          " type="submit">
-                <a href="/login"></a> Register</button>
+          " type="submit"> Register</button>
             </form>
         </div>
 

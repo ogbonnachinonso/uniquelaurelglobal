@@ -3520,13 +3520,18 @@ tr.no_boder {
   margin-bottom:28px;
   position:relative;
 }
-
+.hh{
+  background: #fff;
+  color: #f3c809;
+}
 .select{
   background: transparent;
   color: #dba622;
   width: 100%;
+  padding: 10px;
 }
 .dash{
+  width: 100%;
   background: #3b3a3a;
   color: #fff;
 }

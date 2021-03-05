@@ -1,5 +1,7 @@
-<%- include('../partials/admin') -%>
 
+  <%- include('../partials/admin') -%>
+
+  
   <div class="l-main">
     <div class="account_top_information">
       <div class="account_overlay"></div>
@@ -13,8 +15,8 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="sv_heading_wraper half_section_headign half_sec_heading">
-                <h4>Here are our</h4>
-                <h3> Current Users</h3>
+                <h4> Our</h4>
+                <h3> Referral Account</h3>
 
               </div>
               <div class="x_offer_tabs_wrapper">
@@ -35,16 +37,12 @@
                       <div class="table_next_race league_table overflow-scroll">
                         <table>
                           <tr>
-                            <th class="form_table_resp">UpdateUser</th>
-                            <th>Username</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th class="form_table_resp">User</th>
+                            <th>ReferralName</th>
                             <th>InvestmentPlan</th>
                             <th>InvestmentAmount</th>
                             <th>ReferralBonus</th>
-                            <th>ReferralName</th>
+                            <th>User Account</th>
 
                           </tr>
 
@@ -55,22 +53,10 @@
                             <tr>
 
                               <td>
-                                <a class="btn btn-warning" href="/users/<%= user.id %>">Update</a>
-                              </td>
-                              <td>
                                 <%= user.username %>
                               </td>
                               <td>
-                                <%= user.firstName %>
-                              </td>
-                              <td>
-                                <%= user.lastName %>
-                              </td>
-                              <td>
-                                <%= user.email %>
-                              </td>
-                              <td>
-                                <%= user.phone %>
+                                <%= user.referralName %>
                               </td>
                               <td>
                                 <%= user.plan %>
@@ -82,7 +68,7 @@
                                 <%= user.bonus %>
                               </td>
                               <td>
-                                <%= user.referralName %>
+                                <a class="btn btn-warning" href="/user/<%= user.id %>">See User</a>
                               </td>
                             </tr>
 
@@ -90,7 +76,7 @@
                         </table>
                         
 
-                        <!-- </table> -->
+                       
 
                       </div>
                     </div>
@@ -105,37 +91,6 @@
 
     </div>
   </div>
-  <!-- transaction wrapper start -->
-  <!--  footer  wrapper start -->
-  <div class="copy_footer_wrapper">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <div class="crm_left_footer_cont">
-            <p>2021 Copyright © <a href="#"> Uniquelaurelglobal </a> . All Rights Reserved.</p>
-          </div>
-        </div>
+  
 
-      </div>
-    </div>
-  </div>
-  </div>
-  <!--  footer  wrapper end -->
-  <!-- main box wrapper End-->
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/modernizr.js"></script>
-  <script src="js/dropify.min.js"></script>
-  <script src="js/owl.carousel.js"></script>
-  <script src="js/jquery.countTo.js"></script>
-  <script src="js/plugin.js"></script>
-  <script src="js/jquery.inview.min.js"></script>
-  <script src="js/jquery.magnific-popup.js"></script>
-  <script src="js/jquery.nice-select.min.js"></script>
-  <script src="js/datatables.js"></script>
-  <script src="js/jquery.menu-aim.js"></script>
-  <script src="js/custom.js"></script>
-  <!--main js file end-->
-  </body>
-
-  </html>
+  <%- include('../partials/footer') -%>

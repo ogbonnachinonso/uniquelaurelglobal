@@ -5,15 +5,16 @@ let paymentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  name:{
-    type:String,
-    required: true,
-    
+  user:{
+    type: String,
   },
   plan:{
     type: String,
     required: true,
     
+  },
+  amount:{
+    type: Number,
   },
   createdAt:{
     type: Date,

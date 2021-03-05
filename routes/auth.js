@@ -38,7 +38,7 @@ router.post('/login', passport.authenticate('local', {
 router.post('/register', (req, res) => {
 
   let { username, email, referralName,
-    firstName, lastName, plan,
+    firstName, lastName, plan, phone,
     password } = req.body;
   let userData = {
     referralName,
@@ -46,6 +46,7 @@ router.post('/register', (req, res) => {
     lastName,
     username,
     email,
+    phone,
     plan
   };
   User.findOne({ username: req.body.username }, { email: req.body.email }, function (err, user) {

@@ -27,10 +27,22 @@ let userSchema = new mongoose.Schema({
     type: String,
     select: false
   },
+  phone:{
+    type: Number,
+    required: true,
+    
+  },
   plan:{
     type: String,
     required: true,
     
+  },
+  amount:{
+    type: String,
+    
+  },
+  bonus:{
+    type: Number,
   },
 tokens:[{
   access:{

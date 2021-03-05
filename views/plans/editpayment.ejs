@@ -36,14 +36,17 @@
 
               <div class="form-group">
                 <label for="name">Accout Username</label>
-                <input required name="name" id="name" class="form-control select" placeholder="Enter Account Username" value="<%= payment.name %>">
+                <input required name="user" id="user" class="form-control select" placeholder="Enter Account Username" value="<%= payment.user %>">
               </div>
 
               <div class="form-group">
                 <label for="plan">Investment Plan</label>
                 <input required name="plan" id="plan" class="form-control select" placeholder="Enter Investment Plan" value="<%= payment.plan %>">
               </div>
-
+              <div class="form-group">
+                <label for="plan">Investment Amount</label>
+                <input required name="amount" id="amount" class="form-control select" placeholder="Enter Investment Amount" value="<%= payment.amount %>">
+              </div>
              
               <div class="form-group">
                 <label for="description">Description</label>
@@ -53,7 +56,7 @@
               
               <div class="form-group">
                 <label for="image">Upload Image</label>
-                <input required type="file" id="image" name="image" class="select" required>
+                <input required type="file" id="image" name="image" class="select" >
               </div>
               <div>
                 <a href="/paymentdashboard" class="btn btn-danger">Cancel</a>
@@ -66,4 +69,4 @@
     </div>
   </div>
 
-  <%- include('../partials/footer') -%>
+ 

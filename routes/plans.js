@@ -4,7 +4,7 @@ const Plan = require('../models/plan');
 const User = require('../models/user');
 const Payment = require('../models/payment');
 const mongoose = require('mongoose');
-
+const id = mongoose.Types.ObjectId;
 const path = require('path');
 
 require('dotenv').config();
@@ -35,31 +35,31 @@ router.get('/createPlan', (req, res) => {
 
 router.get('/addPayment', async(req, res) => {
   try {
-    //  const plans = await Plan.find({})
-    //  const users = await User.find({})
+    const users = await User.find({})
     const payment = new Payment() 
     res.render('plans/payment', {
-      //  plans: plans,
-      //  users: users,
-      payment: payment
+      payment: payment,
+      users:  users
     })
   } catch {
-    res.redirect('/login')
+    res.redirect('/addPayment')
   }
 });
 
 
 router.post('/addPayment', upload.single('image'), async (req, res, next) => {
   try {
+    
     const result = await cloudinary.v2.uploader.upload(req.file.path)
     const payment = new Payment()
-    payment.name = req.body.name,
+    payment.user = req.body.user,
     payment.plan = req.body.plan,
+    payment.amount =req.body.amount,
     payment.description = req.body.description,
     payment.imgUrl = result.secure_url
     await payment.save()
     req.flash('success_msg', 'Proof of payment uploaded Successfully')
-    res.redirect('/dashboard')
+    res.redirect('/payments')
   }
   catch (err) {
     req.flash('error_msg', 'ERROR: +err');
@@ -79,18 +79,7 @@ router.get('/payment/:id', (req, res) => {
     });
 });
 
-// Get routes edit/:id
-router.get("/editPayment/:id", upload.single('image'), async (req, res) => {
-  try {
-    const payment = await Payment.findOne({ _id: req.params.id });
-    res.render('plans/editpayment', { payment });
-  }
-  catch (err) {
-    req.flash('error_msg', 'ERROR: +err');
-    res.redirect('/paymentdashboard');
-    console.error(err)
-  }
-});
+
 
 router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
   try {
@@ -100,10 +89,11 @@ router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
     // Upload image to cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
     let data = {
-      name: req.body.name,
+      user: req.body.user,
+      amount: req.body.amount,
       plan: req.body.plan,
       description: req.body.description,
-      imgUrl: result.secure_url
+       imgUrl: result.secure_url
 
     };
     await Payment.findByIdAndUpdate({ _id: req.params.id }, data, {
@@ -111,10 +101,10 @@ router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
       // runValidators: true,
     })
     req.flash('success_msg', 'Gallery updated successfully');
-    res.redirect('/paymentdashboard');
+    res.redirect('/payments');
   } catch (err) {
     req.flash('error_msg', 'ERROR: +err');
-    res.redirect('/paymentdashboard');
+    res.redirect('/payments');
     console.error(err)
   }
 });

@@ -7,7 +7,6 @@ const passport = require('passport');
 
 const localStrategy = require('passport-local').Strategy;
 const session = require('express-session');
-// const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const Router = require('./routes/index');
 const Investment = require('./routes/plans');
@@ -40,16 +39,16 @@ app.use(bodyParser.json());
 app.use(
   session({
     secret: "mysecret",
-    resave: true,
-    saveUninitialized: true,
-    // store: new MongoStore({mongooseConnection:mongoose.connection})
+    resave: false,
+    saveUninitialized: false,
+    
   })
 );
 
 passport
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy({ usernameField: 'username' },
+passport.use(new localStrategy({ usernameField: 'username' }, 
   User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
