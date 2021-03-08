@@ -10,10 +10,11 @@ module.exports = {
 
 
   isAdmin: (req, res, next)=> {
-    if(req.user.role !== 'User'){
+    if(req.user.id === '603d5948b706ba39381057bc'){
        return next();
     } else {
       res.status(403).send('UNAUTHORIZED');
+      res.redirect('/')
     }
 }
 }

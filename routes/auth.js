@@ -259,18 +259,4 @@ router.get("/dashboard", ensureAuth, verify.isUser, (req, res) => {
 
 
 
-
-
-// var nodemailer = require('nodemailer');
-// var transporter = nodemailer.createTransport();
- 
-// transporter.sendMail({
-//    from: 'sender@address',
-//    to: 'receiver@address',
-//    subject: 'hello',
-//    html: '<b>hello world!</b>'
-//    text: 'hello world!'
-// });
-
-
 module.exports = router;
