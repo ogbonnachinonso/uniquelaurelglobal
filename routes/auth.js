@@ -4,7 +4,7 @@ const passport = require('passport');
 const crypto = require('crypto');
 const async = require('async');
 const nodemailer = require('nodemailer');
-
+const { ensureAuth, ensureGuest } = require('../middleware/authenticate');
 const bodyParser = require('body-parser');
 const User = require('../models/user');
 const Plan = require('../models/plan');
@@ -36,7 +36,7 @@ router.post('/login', passport.authenticate('local', {
 }))
 
 // register post route
-router.post('/register', (req, res) => {
+router.post('/register', ensureGuest,(req, res) => {
 
   let { username, email, referralName,
     firstName, lastName, plan, phone,
@@ -245,7 +245,8 @@ router.post('/newpassword', (req, res) => {
 });
 
 // Get route dashboard
-router.get("/dashboard", (req, res) => {
+const verify = require("../middleware/role");
+router.get("/dashboard", ensureAuth, verify.isUser,(req, res) => {
   User.find({})
     .then(users => {
       res.render('auth/dashboard', { users: users });

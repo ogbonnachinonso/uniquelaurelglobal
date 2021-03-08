@@ -11,7 +11,8 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const Plan = require('../models/plan');
 const Payment = require('../models/payment')
-
+const { ensureAuth } = require('../middleware/authenticate');
+const verify = require("../middleware/role");
 
 const path = require('path');
 
@@ -23,7 +24,7 @@ const upload = require('../handler/multer');
 
 
 // Get route dashboard
-router.get("/payments", async (req, res) => {
+router.get("/payments", ensureAuth, verify.isAdmin, async (req, res) => {
   Payment.find({})
   .then(payments => {
     res.render('admin/payment', { payments: payments });
@@ -36,7 +37,7 @@ router.get("/payments", async (req, res) => {
 });
 
 //Admin approval get route
-router.get("/users/:id",  async (req, res) => {
+router.get("/users/:id",ensureAuth, verify.isAdmin, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.id });
     res.render('admin/register', { user });
@@ -49,7 +50,7 @@ router.get("/users/:id",  async (req, res) => {
 });
 
 //User get route
-router.get("/user/:id",  async (req, res) => {
+router.get("/user/:id", ensureAuth, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.id });
     res.render('admin/userDetails', { user });
@@ -62,7 +63,7 @@ router.get("/user/:id",  async (req, res) => {
 });
 
 //Edit Payment Get Route
-router.get("/editPayment/:id", upload.single('image'), async (req, res) => {
+router.get("/editPayment/:id", ensureAuth, upload.single('image'), async (req, res) => {
   try {
     const payment = await Payment.findOne({ _id: req.params.id });
     res.render('plans/editpayment', { payment });
@@ -76,7 +77,7 @@ router.get("/editPayment/:id", upload.single('image'), async (req, res) => {
 
 
 //Update User Post route
-router.post('/users/:id', async (req, res) => {
+router.post('/users/:id', ensureAuth, verify.isAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
     let data = {
@@ -99,7 +100,7 @@ router.post('/users/:id', async (req, res) => {
 });
 
 // Get route Referral Dashboard
-router.get("/referralaccount", (req, res) => {
+router.get("/referralaccount", ensureAuth, verify.isAdmin,(req, res) => {
   User.find({})
     .then(users => {
       res.render('admin/approve', { users: users });
@@ -110,7 +111,7 @@ router.get("/referralaccount", (req, res) => {
     })
 });
 // Get route Users dashboard
-router.get("/users", (req, res) => {
+router.get("/users", ensureAuth, verify.isAdmin,(req, res) => {
   User.find({})
     .then(users => {
       res.render('admin/user', { users: users });

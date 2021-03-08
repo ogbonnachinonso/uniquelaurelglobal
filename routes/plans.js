@@ -5,6 +5,7 @@ const User = require('../models/user');
 const Payment = require('../models/payment');
 const mongoose = require('mongoose');
 const id = mongoose.Types.ObjectId;
+const { ensureAuth } = require('../middleware/authenticate');
 const path = require('path');
 
 require('dotenv').config();
@@ -29,11 +30,11 @@ router.get("/investment", (req, res) => {
 });
 
 // Get routes add folio
-router.get('/createPlan', (req, res) => {
+router.get('/createPlan', ensureAuth, (req, res) => {
   res.render('plans/add');
 });
 
-router.get('/addPayment', async(req, res) => {
+router.get('/addPayment', ensureAuth, async(req, res) => {
   try {
     const users = await User.find({})
     const payment = new Payment() 
@@ -47,7 +48,7 @@ router.get('/addPayment', async(req, res) => {
 });
 
 
-router.post('/addPayment', upload.single('image'), async (req, res, next) => {
+router.post('/addPayment', upload.single('image'), ensureAuth, async (req, res, next) => {
   try {
     
     const result = await cloudinary.v2.uploader.upload(req.file.path)
@@ -67,7 +68,7 @@ router.post('/addPayment', upload.single('image'), async (req, res, next) => {
     res.redirect('/addPayment');
   }
 });
-router.get('/payment/:id', (req, res) => {
+router.get('/payment/:id', ensureAuth, (req, res) => {
   Payment.findOne({ _id: req.params.id })
     .then((payment) => {
       res.render('plans/paymentDetails', { payment: payment });
@@ -81,7 +82,7 @@ router.get('/payment/:id', (req, res) => {
 
 
 
-router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
+router.post('/editPayment/:id', upload.single("image"), ensureAuth, async (req, res) => {
   try {
     const payment = await Payment.findById(req.params.id)
     // Delete image from cloudinary
@@ -110,7 +111,7 @@ router.post('/editPayment/:id', upload.single("image"), async (req, res) => {
 });
 
 //delete request starts here
-router.post("/deletePayment/:id",  async (req, res) => {
+router.post("/deletePayment/:id", ensureAuth, async (req, res) => {
   try {
     // Find gallery by id
     let payment = await Payment.findById(req.params.id);
@@ -126,7 +127,7 @@ router.post("/deletePayment/:id",  async (req, res) => {
   }
 });
 // Post routes Add plan
-router.post('/createPlan',  async (req, res, next) => {
+router.post('/createPlan', ensureAuth, async (req, res, next) => {
   try {
     const plan = new Plan()
     plan.category = req.body.category,
@@ -143,7 +144,7 @@ router.post('/createPlan',  async (req, res, next) => {
 
 
 // Get route dashboard
-router.get("/paymentdashboard", (req, res) => {
+router.get("/paymentdashboard", ensureAuth, (req, res) => {
   Payment.find({})
     .then(payments => {
       res.render('plans/planDashboard', { payments: payments });

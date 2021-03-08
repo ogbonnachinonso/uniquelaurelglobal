@@ -44,6 +44,10 @@ let userSchema = new mongoose.Schema({
   bonus:{
     type: Number,
   },
+  role: {
+    type: String,
+    default: "User"
+},
 tokens:[{
   access:{
     type: String,
