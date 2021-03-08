@@ -4,6 +4,7 @@ const passport = require('passport');
 const crypto = require('crypto');
 const async = require('async');
 const nodemailer = require('nodemailer');
+
 const bodyParser = require('body-parser');
 const User = require('../models/user');
 const Plan = require('../models/plan');
@@ -100,7 +101,7 @@ router.get('/reset/:token', (req, res) => {
     })
 });
 
-//Forgot Password Post route 
+//Post route forgot password
 router.post('/forgot', (req, res, next) => {
   let recoveryPassword = '';
   async.waterfall([
@@ -114,7 +115,7 @@ router.post('/forgot', (req, res, next) => {
       User.findOne({ email: req.body.email })
         .then(user => {
           if (!user) {
-            req.flash('error_msg', 'User does not exist with this email');
+            req.flash('error_msg', 'user does not exist with this email');
             return res.redirect('/forgot');
           }
           user.resetPasswordToken = token;
@@ -137,17 +138,14 @@ router.post('/forgot', (req, res, next) => {
           pass: process.env.GMAIL_PASSWORD
         }
       });
-
-      
-
       let mailOptions = {
         to: user.email,
-        from: 'uniquelaurel20@gmail.com',
-        subject: "Recovery Email from UniqueLaurelGlobal' website",
+        from: 'UniqueGlobal uniquelaurel20@gmail.com',
+        subject: 'Recovery Email from UniqueGlobal ',
         text: 'Please click the following link to recover your password:\n\n' +
           'http://' + req.headers.host + '/reset/' + token + '\n\n' + 'If you did not request this, please ignore this email.'
       };
-      smtpTransport.sendMail(mailOptions, err  => {
+      smtpTransport.sendMail(mailOptions, err => {
         req.flash('success_msg', 'Email sent with further instructions. Please check that.');
         res.redirect('/forgot');
       })
@@ -258,6 +256,20 @@ router.get("/dashboard", (req, res) => {
     })
 });
 
+
+
+
+
+// var nodemailer = require('nodemailer');
+// var transporter = nodemailer.createTransport();
+ 
+// transporter.sendMail({
+//    from: 'sender@address',
+//    to: 'receiver@address',
+//    subject: 'hello',
+//    html: '<b>hello world!</b>'
+//    text: 'hello world!'
+// });
 
 
 module.exports = router;
