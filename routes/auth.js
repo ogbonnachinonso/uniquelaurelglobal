@@ -246,7 +246,7 @@ router.post('/newpassword', (req, res) => {
 
 // Get route dashboard
 const verify = require("../middleware/role");
-router.get("/dashboard", ensureAuth, verify.isUser,(req, res) => {
+router.get("/dashboard", ensureAuth, verify.isUser, verify.isAdmin,(req, res) => {
   User.find({})
     .then(users => {
       res.render('auth/dashboard', { users: users });
