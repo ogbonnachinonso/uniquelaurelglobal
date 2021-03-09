@@ -3524,6 +3524,27 @@ tr.no_boder {
   background: #fff;
   color: #f3c809;
 }
+.timer{
+  color: #f3c809;
+  font-size: 45px;
+  
+}
+.time{
+  color: #f35f09;
+  
+}
+.countdowncontainer{
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  width: 100%;
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  background: rgb(68, 67, 67);
+  padding: 15px;
+  border: 1px solid #999;
+  
+}
 .select{
   background: transparent;
   color: #dba622;

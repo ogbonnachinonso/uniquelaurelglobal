@@ -23,10 +23,7 @@
                   <hr />
                   <p class="card-text "><b>Referral Bonus: <%= currentUser. bonus %> </b></p>
                   <hr />
-                  <div class="card-footer mr-5 mb-4 ">
-                    <a href="/addPayment" class="btn btn-success">Upload Proof of payment</a>
-
-                  </div>
+                
                 </div>
               </div>
 
@@ -49,10 +46,42 @@
                       </a> </b></p>
                   <hr />
 
-                  <div class="card-footer mb-4 ">
-                    <a href="/referralaccount" class="btn btn-warning text-white" style="height: 38px; ">Referral Details
-                    </a>
-                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="card-footer mb-5 ">
+              <div class="row">
+                <div class="col-md-3 ">
+                  <a href="#" class="btn btn-secondary text-white" style="height: 38px; ">Withdraw
+                  </a>
+                </div>
+                <div class="col-md-3">
+                 <table class="countdowncontainer">
+                   <tr>
+                     <td colspan="4" class="time">Time left</td>
+                   </tr>
+                   <tr class="timer">
+                     <td id="days">10</td>
+                     <td id="hours">4</td>
+                     <td id="minutes">12</td>
+                     <td id="seconds">20</td>
+                   </tr>
+                   <tr class="mr-3 ml-3">
+                     <td>Days</td>
+                     <td>Hours</td>
+                     <td>Minutes</td>
+                     <td>Seconds</td>
+                   </tr>
+                 </table>
+                </div>
+                <div class="col-md-3">
+                  <a href="/addPayment" class="btn btn-success">Upload Proof of payment</a>
+
+                </div>
+                <div class="col-md-3">
+                  <a href="/referralaccount" class="btn btn-warning text-white" style="height: 38px; ">Referral Details
+                  </a>
                 </div>
               </div>
             </div>
@@ -136,6 +165,7 @@
   <script src="js/datatables.js"></script>
   <script src="js/jquery.menu-aim.js"></script>
   <script src="js/custom.js"></script>
+  
   <!--main js file end-->
   </body>
 
