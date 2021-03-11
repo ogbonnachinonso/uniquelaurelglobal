@@ -437,6 +437,14 @@ label {
   float:left;
   padding:32px 0px;
 }
+.my_logo{
+  font-size: 25px;
+  font-weight: 600;
+}
+.my_log{
+  font-size: 30px;
+  font-weight: 600;
+}
 .menu-bar {
     cursor: pointer;
     position: relative;
@@ -3526,11 +3534,21 @@ tr.no_boder {
 }
 .timer{
   color: #f3c809;
-  font-size: 45px;
+  font-size: 35px;
   
 }
 .time{
   color: #f35f09;
+  padding-bottom: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  
+}
+.days{
+  color: #fff;
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: bold;
   
 }
 .countdowncontainer{
@@ -3540,9 +3558,9 @@ tr.no_boder {
   width: 100%;
   transform: translateX(-50%) translateY(-50%);
   text-align: center;
-  background: rgb(68, 67, 67);
-  padding: 15px;
-  border: 1px solid #999;
+  /* background: rgb(68, 67, 67); */
+  padding: 45px;
+ 
   
 }
 .select{

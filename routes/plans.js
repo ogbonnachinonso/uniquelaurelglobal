@@ -60,7 +60,7 @@ router.post('/addPayment', upload.single('image'), ensureAuth, async (req, res, 
     payment.imgUrl = result.secure_url
     await payment.save()
     req.flash('success_msg', 'Proof of payment uploaded Successfully')
-    res.redirect('/payments')
+    res.redirect('/dashboard')
   }
   catch (err) {
     req.flash('error_msg', 'ERROR: +err');

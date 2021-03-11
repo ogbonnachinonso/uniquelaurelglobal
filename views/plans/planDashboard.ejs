@@ -4,7 +4,8 @@
    <div class="account_top_information">
         
   <div class="account_overlay"></div>
-    <% payments.forEach((payment)=>{ %>
+    
+      <% if(payments.user){%>
     <div class="container-fluid">
     <div class="card mb-5 w-90 rounded dash">
       <div class="row no-gutters">
@@ -31,7 +32,7 @@
             </div>
           </div>
 
-          <% }) %>
+          <% } %>
             
       </div>
     </div>

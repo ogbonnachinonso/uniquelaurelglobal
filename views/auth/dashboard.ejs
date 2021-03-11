@@ -1,50 +1,49 @@
-<%- include('../partials/head') -%>
+<%- include('../partials/admin') -%>
 
   <div class="l-main">
     <div class="account_top_information">
       <div class="account_overlay"></div>
       <% if(currentUser) {%>
         <div class="container-fluid">
-          <div class="card mb-5 dash">
+          <div class="car mb-5 das">
             <div class="row no-gutters">
-              <div class="col-md-4 ">
-                <img src="images/user.png " alt="card-img" class="card-img img-fluid" />
+              <div class="col-md-2 ">
+                <div class="useriimg">
+                  <img src="../../images/user.png" alt="users">
+                </div>
+                <!-- <img src="images/user.png " alt="card-img" class="card-img img-fluid" /> -->
               </div>
-              <div class="col-md-4 ">
-                <div class="card-body">
+              <div class="col-md-5 ">
+                <div class="car-body">
                   <p class="card-title mt-5 text-white">Username: <%= currentUser.username %>
                   </p>
                   <hr />
-                  <p class="card-text "><b>Last Name: <%= currentUser.lastName %> </b></p>
+                  <p class="car-text "><b>Last Name: <%= currentUser.lastName %> </b></p>
                   <hr />
-                  <p class="card-text "><b>Email: <%=currentUser. email %> </b></p>
+                  <p class="car-text "><b>Email: <%=currentUser. email %> </b></p>
                   <hr />
-                  <p class="card-text "><b>Investment Plan: <%= currentUser. plan %> </b></p>
+                  <p class="car-text "><b>Investment Plan: <%= currentUser. plan %> </b></p>
                   <hr />
-                  <p class="card-text "><b>Referral Bonus: <%= currentUser. bonus %> </b></p>
-                  <hr />
+                  
                 
                 </div>
               </div>
 
-              <div class="col-md-4 ">
-                <div class="card-body">
-                  <p class="card-title mt-5 text-white">First Name: <%= currentUser.firstName %>
+              <div class="col-md-5 ">
+                <div class="car-body">
+                  <p class="car-title mt-5 text-white">First Name: <%= currentUser.firstName %>
                   </p>
                   <hr />
-                  <p class="card-text "><b>Phone Number: <%= currentUser.phone %> </b></p>
+                  <p class="car-text "><b>Phone Number: <%= currentUser.phone %> </b></p>
                   <hr />
 
-                  <p class="card-text "><b>Referral Name: <%=currentUser. referralName %> </b></p>
+                  <p class="car-text "><b>Referral Name: <%=currentUser. referralName %> </b></p>
                   <hr />
 
-                  <p class="card-text "><b>Investment Balance: <%= currentUser. amount %> </b></p>
+                  <p class="car-text "><b>Investment Balance: <%= currentUser. amount %> </b></p>
                   <hr />
 
-                  <p class="card-text "><b><a href="/payments" class="btn btn-info text-white"
-                        style="height: 38px; ">See Account Details
-                      </a> </b></p>
-                  <hr />
+                  
 
                 </div>
               </div>
@@ -52,11 +51,11 @@
             </div>
             <div class="card-footer mb-5 ">
               <div class="row">
-                <div class="col-md-3 ">
+                <div class="col-md-5 mt-5 mb-3">
                   <a href="#" class="btn btn-secondary text-white" style="height: 38px; ">Withdraw
                   </a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6 mt-5 mb-3 px-4">
                  <table class="countdowncontainer">
                    <tr>
                      <td colspan="4" class="time">Time left</td>
@@ -67,7 +66,7 @@
                      <td id="minutes">12</td>
                      <td id="seconds">20</td>
                    </tr>
-                   <tr class="mr-3 ml-3">
+                   <tr class="days">
                      <td>Days</td>
                      <td>Hours</td>
                      <td>Minutes</td>
@@ -75,14 +74,8 @@
                    </tr>
                  </table>
                 </div>
-                <div class="col-md-3">
-                  <a href="/addPayment" class="btn btn-success">Upload Proof of payment</a>
-
-                </div>
-                <div class="col-md-3">
-                  <a href="/referralaccount" class="btn btn-warning text-white" style="height: 38px; ">Referral Details
-                  </a>
-                </div>
+               
+                
               </div>
             </div>
           </div>
@@ -91,38 +84,48 @@
 
           <% if(currentUser) {%>
             <div class="container-fluid">
-              <div class="card mb-5 w-90 rounded dash">
+              <div class=" mb-5 ">
                 <h1 class="text-center mt-4 mb-4 text-white"> Referral Account</h1>
-                <div class="row no-gutters">
+                <div class="row">
                   
                   <div class="col-md-4 ">
-                    <div class="card-body">
-                      <p class="card-title mt-3 text-white">Username: <%= currentUser.username %>
+                    <div class="">
+                      <p class=" mt-3 text-white">Username: <%= currentUser.username %>
                       </p>
                       <hr />
-                      <p class="card-text "><b>Last Name: <%= currentUser.lastName %> </b></p>
+                      <p class=" "><b>Last Name: <%= currentUser.lastName %> </b></p>
                       <hr />
 
-
+                      <div class=" mt-5 mb-3">
+                        <a href="/referralaccount" class="btn btn-warning text-white" style="height: 38px; ">Referral Details
+                        </a>
+                      </div>
 
                     </div>
                   </div>
                   <div class="col-md-4 ">
-                    <div class="card-body">
-                      <p class="card-text "><b>Investment Plan: <%= currentUser.plan %> </b></p>
+                    <div class="car-body">
+                      <p class="car-text "><b>Investment Plan: <%= currentUser.plan %> </b></p>
                       <hr />
-                      <p class="card-text "><b>Investment Amount: <%= currentUser.amount %> </b></p>
+                      <p class="car-text "><b>Investment Amount: <%= currentUser.amount %> </b></p>
                       <hr />
-                      
+                      <div class=" mt-5 mb-3">
+                        <a href="/payments" class="btn btn-info text-white"
+                        style="height: 38px; ">See Account Details
+                      </a> 
+                    </div>
                     </div>
                   </div>
                   <div class="col-md-4 ">
-                    <div class="card-body">
-                      <p class="card-text "><b>Referral Name: <%= currentUser.referralName %> </b></p>
+                    <div class="car-body">
+                      <p class="car-text "><b>Referral Name: <%= currentUser.referralName %> </b></p>
                       <hr />
-                      <p class="card-text "><b>Referral Bonus: <%= currentUser.bonus %> </b></p>
+                      <p class="car-text "><b>Referral Bonus: <%= currentUser.bonus %> </b></p>
                       <hr />
-
+                      <div class=" mt-5 mb-3">
+                        <a href="/addPayment" class="btn btn-success">Upload Proof of payment</a>
+      
+                      </div>
                     </div>
                   </div>
                 </div>
